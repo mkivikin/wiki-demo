@@ -1,0 +1,38 @@
+interview/wikicredit/dto/CompanyResponse.java
+ interview.wikicredit.dto.CompanyResponse
+interview/wikicredit/WikiCreditApplication.java
+ interview.wikicredit.WikiCreditApplication
+interview/wikicredit/repository/CompanyRepository.java
+ interview.wikicredit.repository.CompanyRepository
+interview/wikicredit/dto/CompanyRequest.java
+ interview.wikicredit.dto.CompanyRequest
+interview/wikicredit/repository/WikipediaDataRepository.java
+ interview.wikicredit.repository.WikipediaDataRepository
+interview/wikicredit/service/CompanyDataService.java
+ interview.wikicredit.service.CompanyDataService
+interview/wikicredit/dto/WikipediaDataResponse.java
+ interview.wikicredit.dto.WikipediaDataResponse
+interview/wikicredit/data/Company.java
+ interview.wikicredit.data.Company
+interview/wikicredit/mapper/CompanyMapper.java
+ interview.wikicredit.mapper.CompanyMapper
+interview/wikicredit/data/WikipediaData.java
+ interview.wikicredit.data.WikipediaData
+interview/wikicredit/mapper/WikipediaDataMapper.java
+ interview.wikicredit.mapper.WikipediaDataMapper
+interview/wikicredit/service/CompanyService.java
+ interview.wikicredit.service.CompanyService
+interview/wikicredit/dto/WikiSummaryResponse.java
+ interview.wikicredit.dto.WikiSummaryResponse
+interview/wikicredit/controller/CompanyController.java
+ interview.wikicredit.controller.CompanyController
+interview/wikicredit/ControllerAdvisor.java
+ interview.wikicredit.ControllerAdvisor
+interview/wikicredit/service/DefaultCompanyService.java
+ interview.wikicredit.service.DefaultCompanyService
+interview/wikicredit/controller/WikiLoadingController.java
+ interview.wikicredit.controller.WikiLoadingController
+interview/wikicredit/service/WikipediaCompanyDataService.java
+ interview.wikicredit.service.WikipediaCompanyDataService
+interview/wikicredit/service/WikipediaRequestService.java
+ interview.wikicredit.service.WikipediaRequestService
