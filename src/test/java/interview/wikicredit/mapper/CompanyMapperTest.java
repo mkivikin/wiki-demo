@@ -41,7 +41,6 @@ class CompanyMapperTest {
     void companyToResponse_companyWithWikiData_returnsCompanyResponse(){
         String companyName = "Swedbank";
         Company company = new Company();
-        company.setId(1);
         company.setName(companyName);
         WikipediaData data = new WikipediaData();
         data.setCompany(company);
