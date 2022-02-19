@@ -1,7 +1,7 @@
 package interview.wikicredit.controller;
 
-import interview.wikicredit.dto.WikipediaDataResponse;
-import interview.wikicredit.mapper.WikipediaDataMapper;
+import interview.wikicredit.dto.CompanyDataResponse;
+import interview.wikicredit.mapper.CompanyDataMapper;
 import interview.wikicredit.service.CompanyDataService;
 import interview.wikicredit.service.WikipediaCompanyDataService;
 import org.springframework.http.ResponseEntity;
@@ -23,15 +23,15 @@ public class WikiLoadingController {
     }
 
     @GetMapping("/{companyId}")
-    public ResponseEntity<WikipediaDataResponse> getWikipediaData(@PathVariable Integer companyId) {
-        return ResponseEntity.ok(WikipediaDataMapper.INSTANCE
+    public ResponseEntity<CompanyDataResponse> getWikipediaData(@PathVariable Integer companyId) {
+        return ResponseEntity.ok(CompanyDataMapper.INSTANCE
             .wikipediaDataToResponse(companyDataService.getCompanyData(companyId)));
     }
 
     @PutMapping("/{companyId}")
-    public ResponseEntity<WikipediaDataResponse> persistDataFromWikipedia(
+    public ResponseEntity<CompanyDataResponse> persistDataFromWikipedia(
         @PathVariable Integer companyId) {
-        return ResponseEntity.ok(WikipediaDataMapper.INSTANCE
+        return ResponseEntity.ok(CompanyDataMapper.INSTANCE
             .wikipediaDataToResponse(companyDataService.fetchCompanyDataFromWiki(companyId)));
     }
 

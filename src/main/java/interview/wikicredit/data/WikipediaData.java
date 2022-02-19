@@ -33,6 +33,5 @@ public class WikipediaData {
     @Column(name = "page_id")
     private Integer pageId;
 
-
     private String summary;
 }

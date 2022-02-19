@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class WikipediaDataResponse {
+public class CompanyDataResponse {
 
     Long companyId;
 

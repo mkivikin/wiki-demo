@@ -2,35 +2,35 @@ package interview.wikicredit.mapper;
 
 import interview.wikicredit.data.Company;
 import interview.wikicredit.data.WikipediaData;
-import interview.wikicredit.dto.WikipediaDataResponse;
+import interview.wikicredit.dto.CompanyDataResponse;
 import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-02-17T21:51:27+0200",
+    date = "2022-02-19T13:27:07+0200",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-6.8.3.jar, environment: Java 11.0.2 (Oracle Corporation)"
 )
-public class WikipediaDataMapperImpl implements WikipediaDataMapper {
+public class CompanyDataMapperImpl implements CompanyDataMapper {
 
     @Override
-    public WikipediaDataResponse wikipediaDataToResponse(WikipediaData data) {
+    public CompanyDataResponse wikipediaDataToResponse(WikipediaData data) {
         if ( data == null ) {
             return null;
         }
 
-        WikipediaDataResponse wikipediaDataResponse = new WikipediaDataResponse();
+        CompanyDataResponse companyDataResponse = new CompanyDataResponse();
 
-        wikipediaDataResponse.setCompanyName( dataCompanyName( data ) );
+        companyDataResponse.setCompanyName( dataCompanyName( data ) );
         Integer id = dataCompanyId( data );
         if ( id != null ) {
-            wikipediaDataResponse.setCompanyId( id.longValue() );
+            companyDataResponse.setCompanyId( id.longValue() );
         }
-        wikipediaDataResponse.setUpdatedAt( data.getUpdatedAt() );
-        wikipediaDataResponse.setArticleExists( data.getArticleExists() );
-        wikipediaDataResponse.setPageId( data.getPageId() );
-        wikipediaDataResponse.setSummary( data.getSummary() );
+        companyDataResponse.setUpdatedAt( data.getUpdatedAt() );
+        companyDataResponse.setArticleExists( data.getArticleExists() );
+        companyDataResponse.setPageId( data.getPageId() );
+        companyDataResponse.setSummary( data.getSummary() );
 
-        return wikipediaDataResponse;
+        return companyDataResponse;
     }
 
     private String dataCompanyName(WikipediaData wikipediaData) {

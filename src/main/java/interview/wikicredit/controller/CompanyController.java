@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/companies")
 public class CompanyController {
@@ -31,7 +33,7 @@ public class CompanyController {
     }
 
     @PostMapping
-    public ResponseEntity<CompanyResponse> createCompany(@RequestBody CompanyRequest request) {
+    public ResponseEntity<CompanyResponse> createCompany(@Valid @RequestBody CompanyRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED)
             .body(CompanyMapper.INSTANCE.companyToResponse(companyService.createCompany(request)));
     }

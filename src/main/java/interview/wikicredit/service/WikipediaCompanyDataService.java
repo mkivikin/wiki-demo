@@ -3,15 +3,20 @@ package interview.wikicredit.service;
 import interview.wikicredit.data.Company;
 import interview.wikicredit.data.WikipediaData;
 import interview.wikicredit.dto.WikiSummaryResponse;
+import interview.wikicredit.mapper.WikipediaResponseMapper;
 import interview.wikicredit.repository.WikipediaDataRepository;
 import java.time.Instant;
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
+import javax.validation.ValidationException;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClientException;
 
 @Service
 @Transactional
+@Slf4j
 public class WikipediaCompanyDataService implements CompanyDataService {
 
     private final WikipediaRequestService requestService;
@@ -36,23 +41,44 @@ public class WikipediaCompanyDataService implements CompanyDataService {
     @Override
     public WikipediaData fetchCompanyDataFromWiki(Integer companyId) {
         Company company = companyService.getCompanyById(companyId);
+        WikipediaData data = getExistingCompanyWikiData(company);
+
+        try {
+            WikiSummaryResponse response = requestService.fetchSummaryFromWiki(company.getName());
+            validateWikipediaResponse(response);
+            data = WikipediaResponseMapper.INSTANCE.mergeResponseToWikipediaData(data, response);
+            data.setArticleExists(true);
+        } catch(WebClientException e) {
+            data.setArticleExists(false);
+            log.warn("Failed to fetch company data from wikipedia", e);
+        }
+        data.setUpdatedAt(Instant.now());
+
+        return repository.save(data);
+    }
+
+    public void validateWikipediaResponse(WikiSummaryResponse response){
+        if(response == null ) {
+            throw new ValidationException("Response is missing.");
+        }
+        if(response.getExtract() == null) {
+            throw new ValidationException("Extract is missing from response.");
+        }
+        if(response.getPageId() == null) {
+            throw new ValidationException("PageId is missing from response.");
+        }
+
+    }
+
+    public WikipediaData getExistingCompanyWikiData(Company company) {
         WikipediaData data = company.getWikipediaData();
         if(data == null ) {
             data = new WikipediaData();
             data.setCompany(company);
-        }
-        data.setUpdatedAt(Instant.now());
-
-        try {
-            WikiSummaryResponse response = requestService.fetchSummaryFromWiki(company.getName());
-            data.setPageId(response.getPageId());
-            data.setSummary(response.getExtract());
-            data.setArticleExists(true);
-        } catch(WebClientException e) {
             data.setArticleExists(false);
         }
 
-        return repository.save(data);
+        return data;
     }
 
 
