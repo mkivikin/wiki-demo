@@ -11,9 +11,12 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "company", schema = "WIKICREDIT")
@@ -28,6 +31,5 @@ public class Company {
     String name;
 
     @OneToOne(mappedBy = "company", cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
     WikipediaData wikipediaData;
 }

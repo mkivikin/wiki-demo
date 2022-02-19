@@ -7,8 +7,8 @@ import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 @Mapper
-public interface CompanyDataMapper {
-    CompanyDataMapper INSTANCE = Mappers.getMapper(CompanyDataMapper.class);
+public interface WikipediaDataMapper {
+    WikipediaDataMapper INSTANCE = Mappers.getMapper(WikipediaDataMapper.class);
 
     @Mapping(source = "company.name", target = "companyName")
     @Mapping(source = "company.id", target = "companyId")

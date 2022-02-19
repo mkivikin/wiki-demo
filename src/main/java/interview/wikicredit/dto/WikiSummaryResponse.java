@@ -9,11 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class WikiSummaryResponse {
 
-    @NotNull
     @JsonProperty("pageid")
     private Integer pageId;
 
-    @NotNull
     private String extract;
 
 }
