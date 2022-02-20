@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class WikipediaResponseMapperTest {
 
     @Test
-    void mergeResponseToWikipediaData_emptyData_returnsUpdatedData(){
+    void mergeResponseToWikipediaData_emptyData_returnsUpdatedData() {
         WikiSummaryResponse response = new WikiSummaryResponse();
         response.setPageId(123);
         response.setExtract("Random text from wikipedia");

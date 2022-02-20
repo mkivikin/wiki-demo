@@ -1,12 +1,13 @@
 package interview.wikicredit.service;
 
+import interview.wikicredit.data.Company;
 import interview.wikicredit.dto.CompanyRequest;
 import interview.wikicredit.mapper.CompanyMapper;
 import interview.wikicredit.repository.CompanyRepository;
-import interview.wikicredit.data.Company;
+import org.springframework.stereotype.Service;
+
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
-import org.springframework.stereotype.Service;
 
 @Service
 @Transactional

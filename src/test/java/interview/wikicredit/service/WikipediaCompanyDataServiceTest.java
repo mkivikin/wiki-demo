@@ -24,27 +24,23 @@ import static org.mockito.ArgumentMatchers.any;
 @ExtendWith(MockitoExtension.class)
 class WikipediaCompanyDataServiceTest {
 
+    @Mock
+    WikipediaRequestService requestService;
+    @Mock
+    WikipediaDataRepository repository;
+    @Captor
+    ArgumentCaptor<WikipediaData> wikiDataCaptor;
     private WikipediaCompanyDataService service;
-
     @Mock
     private DefaultCompanyService companyService;
 
-    @Mock
-    WikipediaRequestService requestService;
-
-    @Mock
-    WikipediaDataRepository repository;
-
-    @Captor
-    ArgumentCaptor<WikipediaData> wikiDataCaptor;
-
     @BeforeEach
-    private void setUp(){
+    private void setUp() {
         service = new WikipediaCompanyDataService(requestService, companyService, repository);
     }
 
     @Test
-    void getCompanyData_notFound_throwsEntityNotFoundException(){
+    void getCompanyData_notFound_throwsEntityNotFoundException() {
         Integer companyId = 1;
 
         Mockito.when(repository.findById(companyId)).thenReturn(Optional.empty());
@@ -53,7 +49,7 @@ class WikipediaCompanyDataServiceTest {
     }
 
     @Test
-    void getCompanyData_found_ReturnsWikipediaData(){
+    void getCompanyData_found_ReturnsWikipediaData() {
         Integer companyId = 1;
         Company company = new Company();
         company.setId(companyId);
@@ -73,7 +69,7 @@ class WikipediaCompanyDataServiceTest {
     }
 
     @Test
-    void getExistingCompanyWikipediaData_noDataPresent_newDataCreated(){
+    void getExistingCompanyWikipediaData_noDataPresent_newDataCreated() {
         Company company = new Company();
         company.setId(123);
         company.setName("East Empire Company");
@@ -85,7 +81,7 @@ class WikipediaCompanyDataServiceTest {
     }
 
     @Test
-    void getExistingCompanyWikipediaData_dataPresent_dataReturned(){
+    void getExistingCompanyWikipediaData_dataPresent_dataReturned() {
         Company company = new Company();
         company.setId(123);
         company.setName("East Empire Company");
@@ -103,12 +99,12 @@ class WikipediaCompanyDataServiceTest {
     }
 
     @Test
-    void validateWikipediaResponse_noResponse_throwsValidationException(){
+    void validateWikipediaResponse_noResponse_throwsValidationException() {
         assertThrows(ValidationException.class, () -> service.validateWikipediaResponse(null));
     }
 
     @Test
-    void validateWikipediaResponse_noExtract_throwsValidationException(){
+    void validateWikipediaResponse_noExtract_throwsValidationException() {
         WikiSummaryResponse response = new WikiSummaryResponse();
         response.setPageId(123);
 
@@ -116,7 +112,7 @@ class WikipediaCompanyDataServiceTest {
     }
 
     @Test
-    void validateWikipediaResponse_noPageId_throwsValidationException(){
+    void validateWikipediaResponse_noPageId_throwsValidationException() {
         WikiSummaryResponse response = new WikiSummaryResponse();
         response.setExtract("Fake test extract");
 
@@ -124,7 +120,7 @@ class WikipediaCompanyDataServiceTest {
     }
 
     @Test
-    void fetchCompanyDataFromWiki_responsePresent_dataReturned(){
+    void fetchCompanyDataFromWiki_responsePresent_dataReturned() {
         Integer companyId = 1;
         Company company = new Company();
         company.setId(companyId);

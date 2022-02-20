@@ -7,12 +7,13 @@ import org.junit.jupiter.api.Test;
 
 import java.time.Instant;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class CompanyDataMapperTest {
 
     @Test
-    void wikipediaDataToResponse_validData_returnsCompanyDataResponse(){
+    void wikipediaDataToResponse_validData_returnsCompanyDataResponse() {
         Instant updatedAt = Instant.now();
         String companyName = "Swedbank";
         Company company = new Company();

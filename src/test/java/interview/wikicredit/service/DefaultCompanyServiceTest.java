@@ -26,12 +26,12 @@ class DefaultCompanyServiceTest {
     private CompanyRepository repository;
 
     @BeforeEach
-    private void setUp(){
+    private void setUp() {
         service = new DefaultCompanyService(repository);
     }
 
     @Test
-    void createCompany_validRequest_returnsCompany(){
+    void createCompany_validRequest_returnsCompany() {
         String companyName = "RandomCompany";
         CompanyRequest request = new CompanyRequest();
         request.setName(companyName);
@@ -46,7 +46,7 @@ class DefaultCompanyServiceTest {
     }
 
     @Test
-    void getCompanyById_notFound_throwsEntityNotFoundException(){
+    void getCompanyById_notFound_throwsEntityNotFoundException() {
         Integer companyId = 1;
 
         Mockito.when(repository.findById(companyId)).thenReturn(Optional.empty());
@@ -55,7 +55,7 @@ class DefaultCompanyServiceTest {
     }
 
     @Test
-    void getCompanyById_found_returnsCompany(){
+    void getCompanyById_found_returnsCompany() {
         Integer companyId = 1;
         Company company = new Company();
         company.setId(companyId);

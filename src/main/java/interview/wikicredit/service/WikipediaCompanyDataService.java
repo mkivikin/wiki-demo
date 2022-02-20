@@ -5,14 +5,14 @@ import interview.wikicredit.data.WikipediaData;
 import interview.wikicredit.dto.WikiSummaryResponse;
 import interview.wikicredit.mapper.WikipediaResponseMapper;
 import interview.wikicredit.repository.WikipediaDataRepository;
-import java.time.Instant;
-import javax.persistence.EntityNotFoundException;
-import javax.transaction.Transactional;
-import javax.validation.ValidationException;
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClientException;
+
+import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
+import javax.validation.ValidationException;
+import java.time.Instant;
 
 @Service
 @Transactional
@@ -48,7 +48,7 @@ public class WikipediaCompanyDataService implements CompanyDataService {
             validateWikipediaResponse(response);
             data = WikipediaResponseMapper.INSTANCE.mergeResponseToWikipediaData(data, response);
             data.setArticleExists(true);
-        } catch(WebClientException e) {
+        } catch (WebClientException e) {
             data.setArticleExists(false);
             log.warn("Failed to fetch company data from wikipedia", e);
         }
@@ -57,14 +57,14 @@ public class WikipediaCompanyDataService implements CompanyDataService {
         return repository.save(data);
     }
 
-    public void validateWikipediaResponse(WikiSummaryResponse response){
-        if(response == null ) {
+    public void validateWikipediaResponse(WikiSummaryResponse response) {
+        if (response == null) {
             throw new ValidationException("Response is missing.");
         }
-        if(response.getExtract() == null) {
+        if (response.getExtract() == null) {
             throw new ValidationException("Extract is missing from response.");
         }
-        if(response.getPageId() == null) {
+        if (response.getPageId() == null) {
             throw new ValidationException("PageId is missing from response.");
         }
 
@@ -72,7 +72,7 @@ public class WikipediaCompanyDataService implements CompanyDataService {
 
     public WikipediaData getExistingCompanyWikiData(Company company) {
         WikipediaData data = company.getWikipediaData();
-        if(data == null) {
+        if (data == null) {
             data = new WikipediaData();
             data.setCompany(company);
             data.setArticleExists(false);

@@ -6,14 +6,12 @@ import interview.wikicredit.dto.CompanyRequest;
 import interview.wikicredit.dto.CompanyResponse;
 import org.junit.jupiter.api.Test;
 
-import java.time.Instant;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class CompanyMapperTest {
 
     @Test
-    void companyRequestToCompany_validRequest_returnsCompany(){
+    void companyRequestToCompany_validRequest_returnsCompany() {
         String companyName = "Swedbank";
         CompanyRequest request = new CompanyRequest();
         request.setName(companyName);
@@ -25,7 +23,7 @@ class CompanyMapperTest {
     }
 
     @Test
-    void companyToResponse_companyWithoutWikiData_returnsCompanyResponse(){
+    void companyToResponse_companyWithoutWikiData_returnsCompanyResponse() {
         String companyName = "Swedbank";
         Company company = new Company();
         company.setName(companyName);
@@ -38,7 +36,7 @@ class CompanyMapperTest {
     }
 
     @Test
-    void companyToResponse_companyWithWikiData_returnsCompanyResponse(){
+    void companyToResponse_companyWithWikiData_returnsCompanyResponse() {
         String companyName = "Swedbank";
         Company company = new Company();
         company.setName(companyName);
