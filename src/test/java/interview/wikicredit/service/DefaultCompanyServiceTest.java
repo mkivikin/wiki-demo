@@ -20,10 +20,10 @@ import static org.mockito.ArgumentMatchers.any;
 @ExtendWith(MockitoExtension.class)
 class DefaultCompanyServiceTest {
 
-    DefaultCompanyService service;
+    private DefaultCompanyService service;
 
     @Mock
-    CompanyRepository repository;
+    private CompanyRepository repository;
 
     @BeforeEach
     private void setUp(){
