@@ -72,7 +72,7 @@ public class WikipediaCompanyDataService implements CompanyDataService {
 
     public WikipediaData getExistingCompanyWikiData(Company company) {
         WikipediaData data = company.getWikipediaData();
-        if(data == null ) {
+        if(data == null) {
             data = new WikipediaData();
             data.setCompany(company);
             data.setArticleExists(false);
