@@ -14,7 +14,7 @@ public class WikipediaData {
 
     @Id
     @Column(name = "company_id")
-    Integer id;
+    private Integer id;
 
     @OneToOne
     @MapsId

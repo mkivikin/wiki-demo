@@ -16,11 +16,11 @@ public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    Integer id;
+    private Integer id;
 
     @NotNull
-    String name;
+    private String name;
 
     @OneToOne(mappedBy = "company", cascade = CascadeType.ALL)
-    WikipediaData wikipediaData;
+    private WikipediaData wikipediaData;
 }
