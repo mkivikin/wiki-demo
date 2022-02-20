@@ -9,7 +9,6 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity
 @Table(name = "company", schema = "WIKICREDIT")
 public class Company {
